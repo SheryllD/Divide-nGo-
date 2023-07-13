@@ -2,7 +2,7 @@
 Divide&Go
 
 # Description
-Divide & Go is a user-friendly application that facilitates the division of expenses among friends and family. It offers a centralized platform where you can effortlessly organize all your shared bills, enabling everyone involved to have a clear view of who owes what. Whether you're embarking on a group trip with your friends or splitting the costs of rent and groceries with your flatmates. Divide&Go provides a convenient way to manage and track your shared expenses.
+Divide&Go is a user-friendly application that facilitates the division of expenses among friends and family. It offers a centralized platform where you can effortlessly organize all your shared bills, enabling everyone involved to have a clear view of who owes what. Whether you're embarking on a group trip with your friends or splitting the costs of rent and groceries with your flatmates. Divide&Go provides a convenient way to manage and track your shared expenses.
 
 # MVP
 MVP definition here, list of minimum features
