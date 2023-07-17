@@ -1,5 +1,3 @@
-const user = require('../models/User.model');
-
 const express = require('express');
 const router = express.Router();
 
