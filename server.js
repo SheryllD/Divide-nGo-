@@ -6,3 +6,7 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server listening on http://localhost:${PORT}`);
 });
+
+// linking //
+// const User = require("./models/User.model");
+// const userRoutes = require("./routes/user.route");
