@@ -47,14 +47,14 @@ router.get("/login", (req, res, next) => {
 
     /* Logout */
 
-    router.post("/logout", (req, res) => {
-      req.session.destroy();
-      res.redirect("/");
-    });
+    // router.post("/logout", (req, res) => {
+    //   req.session.destroy();
+    //   res.redirect("/");
+    // });
     
-    router.get("/user-profile", (req, res) => {
-      res.render("users/user-profile");
-    });
+    // router.get("/user-profile", (req, res) => {
+    //   res.render("users/user-profile");
+    // });
   
 
 module.exports = router;
