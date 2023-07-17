@@ -16,16 +16,23 @@ require('./config')(app)
 
 // default value for title local
 const capitalize = require('./utils/capitalize')
-const projectName = 'devide-ngo-'
+const projectName = 'Divide&Go'
 
-app.locals.appTitle = `${capitalize(projectName)} created with IronLauncher`
+app.locals.appTitle = `${capitalize(projectName)} here we place the logo`
 
-// 👇 Start handling routes here
+// 👇 Start handling routes here!
+
+//here is our homepage route
 const indexRoutes = require('./routes/index.routes')
 app.use('/', indexRoutes)
 
+//here is our auth route
 const authRoutes = require('./routes/auth.routes')
 app.use('/auth', authRoutes)
+
+//here is our LoggedInUser route 
+const LoggedInUserRoutes = require('./routes/LoggedInUser.routes')
+app.use('/LoggedInUser', LoggedInUserRoutes)
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require('./error-handling')(app)
