@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User.model'); 
+const bcrypt = require('bcryptjs')
 
 /* GET signup page */
 router.get("/signup", (req, res, next) => {
@@ -23,10 +24,29 @@ router.get("/login", (req, res, next) => {
     res.render("auth/login");
   });
   
-  /* post data to check if our user is in the database */
-  router.get("/login", (req, res, next) => {
-      res.render("index");
-    });
+  /* post login route to process the data */
+  router.post('/login', (req, res, next) => {
+    const { email, password } = req.body;
+   
+    if (email === '' || password === '') {
+      res.render('auth/login', {
+        errorMessage: 'Please enter both, email and password to login.'
+      });
+      return;
+    }
+   
+    user.findOne({ email })
+      .then(user => {
+        if (!user) {
+          res.render('auth/login', { errorMessage: 'Email is not registered. Try with other email.' });
+          return;
+        } else if (bcryptjs.compareSync(password, user.passwordHash)) {
+          res.render('/LoggedInUser/welcomepage', { user });
+        } else {
+          res.render('auth/login', { errorMessage: 'Incorrect password.' });
+        }
+      })
+      .catch(error => next(error));
+  });
   
-
 module.exports = router;

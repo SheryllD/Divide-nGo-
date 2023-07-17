@@ -34,6 +34,7 @@ app.use('/auth', authRoutes)
 const LoggedInUserRoutes = require('./routes/LoggedInUser.routes')
 app.use('/LoggedInUser', LoggedInUserRoutes)
 
+
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require('./error-handling')(app)
 
