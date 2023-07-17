@@ -9,7 +9,7 @@ const User = require("../models/User.model");
 
 /* GET signup page */
 router.get("/signup", (req, res, next) => {
-  res.render("../views/auth/signup.ejs");
+  res.render("auth/signup");
 });
 
 /* post data to register user */
@@ -37,7 +37,7 @@ router.post("/signup", (req, res, next) => {
 });
 /* GET Login page */
 router.get("/login", (req, res, next) => {
-    res.render("index");
+    res.render("auth/login");
   });
   
   /* post data to check if our user is in the database */
@@ -46,15 +46,15 @@ router.get("/login", (req, res, next) => {
     });
 
     /* Logout */
-
+ /*  
     router.post("/logout", (req, res) => {
       req.session.destroy();
       res.redirect("/");
     });
-    
+ 
     router.get("/user-profile", (req, res) => {
       res.render("users/user-profile");
     });
-  
+  */ 
 
 module.exports = router;
