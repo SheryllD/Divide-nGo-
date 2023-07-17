@@ -9,7 +9,7 @@ const User = require("../models/User.model");
 
 /* GET signup page */
 router.get("/signup", (req, res, next) => {
-  res.render("../views/auth/signup.ejs");
+  res.render("auth/signup.ejs");
 });
 
 /* post data to register user */
