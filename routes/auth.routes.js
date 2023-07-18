@@ -13,11 +13,9 @@ router.post("/signup", async(req, res, next) => {
 //    res.render("index");
 let newUser = await User.create(req.body) 
 res.redirect("/auth/login")
-  });
+});
+
 // bcrypt 
-
-
-
 // we also need to create a route for the user to post their bill/expense 
 // within the group we should be also able to get the info of other users expenses
 
