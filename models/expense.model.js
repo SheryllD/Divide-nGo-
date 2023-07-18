@@ -26,8 +26,8 @@ const expenseSchema = new Schema({
         ref: 'User',
         required: true
     }
-}, { timestamps: true });
-
+}, 
+{ timestamps: true });
 
 const Expense = model("Expense", expenseSchema);
 module.exports = Expense;
