@@ -9,9 +9,16 @@
   </head>
 
   <body>
-    <%- body %>
+  
+<nav> 
+  <ul style="list-style: none; display: flex; gap: 25px">
+    <li> <a href="/">Home</a> </li>
+    <li> <a href="auth/signup">Sign up</a></li>
+    <li> <a href="/auth/login">Login</a></li>
+  </ul>
+</nav>
 
-
-    <script src="/js/script.js"></script>
+<script src="/js/script.js"></script>
+<%- body %>
   </body>
 </html>
