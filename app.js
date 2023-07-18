@@ -20,7 +20,7 @@ const projectName = 'Divide&Go'
 
 app.locals.appTitle = `${capitalize(projectName)} here we place the logo`
 
-// 👇 Start handling routes here!
+// All our routes
 
 //here is our homepage route
 const indexRoutes = require('./routes/index.routes')
