@@ -1,5 +1,5 @@
 const { Schema, model } = require("mongoose");
-
+const crypto = require('crypto');
 
 // TODO: Please make sure you edit the User model to whatever makes sense in this case
 const userSchema = new Schema({
@@ -21,20 +21,7 @@ const userSchema = new Schema({
       type: String,
       required: true
     },
-  // },
-  // {
-    // this second object adds extra properties: `createdAt` and `updatedAt`    
-   
-    // timestamps: true,
 
-    // createdAt: {
-    //   type: Date,
-    //   default: Date.now,
-    // },
-    // updatedAt: {
-    //   type: Date,
-    //   default: Date.now,
-    // },
   });
 
 const User = model("User", userSchema);
