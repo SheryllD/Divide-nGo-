@@ -24,7 +24,7 @@ const salt = bcrypt.genSaltSync(13)
     return;
   }
 
-try { 
+  try { 
   const newUser = await User.create(payload) 
   res.redirect("/auth/login")
 } catch (err) {
@@ -88,7 +88,8 @@ router.post("/login", async(req, res, next) => {
       });
       return;
     }
-  
+    
+
     const isPasswordValid = bcrypt.compareSync(password, user.passwordHash);
     if (isPasswordValid) {
       res.redirect('LoggedInUser/UserProfile.ejs'); // Redirect to the user profile page after successful login
@@ -96,6 +97,7 @@ router.post("/login", async(req, res, next) => {
       res.render('auth/login', { errorMessage: 'Incorrect password.' });
     }
   }); 
+
 
 router.get('/UserProfile', (req, res) => res.render('LoggedInUser/UserProfile.ejs'));
 
