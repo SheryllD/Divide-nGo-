@@ -12,28 +12,56 @@ router.get("/signup", (req, res, next) => {
 router.post("/signup", async(req, res, next) => {
 console.log(req.body)
 const payload = { ...req.body}
+
 delete payload.password
+
 const salt = bcrypt.genSaltSync(13)
 
 payload.passwordHash = bcrypt.hashSync(req.body.password, salt)
 
 try { 
   const newUser = await User.create(payload) 
-  res.send(newUser)
+  res.redirect("/auth/login")
 } catch (err) {
   console.log(err)
 }
 });
 
-// bcrypt 
 // we also need to create a route for the user to post their bill/expense 
 // within the group we should be also able to get the info of other users expenses
 
 /* GET Login page */
 router.get("/login", (req, res, next) => {
-    res.render("auth/login");
+  res.render("auth/login");
   });
-  
+
+// post data to check if our user is our user 
+router.post("/login", async(req, res, next) => {
+  console.log(req.body)
+  try {
+    const currentUser = req.body
+    const checkedUser = await User.findOne({ email: currentUser.email.toLowerCase()})
+      if (checkedUser) {
+      // User exists
+      if(bcrypt.compareSync(currentUser.password, checkedUser.passwordHash)){
+        //password is correct
+        const loggedUser = { ...checkedUser._doc}
+        delete loggedUser.passwordHash
+        console.log(loggedUser) 
+        res.redirect("/LoggedInUser/profile")
+      } else {
+        // password is incorrect 
+        console.log("Password is incorrect")
+      res.render("auth/login", {errorMessage: "Password is incorrect", payload: {email: currentUser.email}, 
+    })
+      }
+    } else {
+        // no user exists with this email
+        console.log("No user with this email")
+      }
+  } catch (err) {console.log("err occured: ", err)
+}});
+
   /* post login route to process the data */
   router.post('/login', (req, res, next) => {
     const { email, password } = req.body;

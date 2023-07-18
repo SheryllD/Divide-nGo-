@@ -4,7 +4,7 @@ const User = require('../models/User.model');
 const bcrypt = require('bcryptjs')
 
 /* GET Welcome User */
-router.get("/UserProfile", (req, res, next) => {
+router.get("/profile", (req, res, next) => {
     res.render("LoggedInUser/UserProfile");
   }); 
 
