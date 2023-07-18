@@ -16,8 +16,8 @@ description: {
     
 });
 
-const group = model("group", groupSchema);
-module.exports = group;
+const Group = model("Group", groupSchema);
+module.exports = Group;
 
 
 

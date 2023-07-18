@@ -1,7 +1,7 @@
 const {Schema, model} = require("mongoose")
 
 const expenseSchema = new Schema({
-    groupId: {
+    groupName: {
         type: Schema.Types.ObjectId,
         ref: 'Group',
         required: true
@@ -9,15 +9,11 @@ const expenseSchema = new Schema({
     description: {
         type: String,
         required: true,
-        minlength: 3,
-        maxlength: 50,
         trim: true
     },
     category: {
         type: String,
-        required: true,
-        minlength: 3,
-        maxlength: 32,
+        required: false,
         trim: true
     },
     amount: {
@@ -33,5 +29,5 @@ const expenseSchema = new Schema({
 }, { timestamps: true });
 
 
-const group = model("expense", expenseSchema);
-module.exports = expense;
+const Expense = model("Expense", expenseSchema);
+module.exports = Expense;
