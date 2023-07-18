@@ -1,19 +1,19 @@
-<h1>Signup</h1>
+<h1>Sign up</h1>
 
 <form action="/auth/signup" method="post">
     <div class="signup">
-        <label for="signup" class="form-label">Full name</label>
-        <input type="text" name = 'username' class="form-control" id="signUpFullName" aria-describedby="emailHelp">
+        <label for="signup" class="form-label">Username:</label>
+        <input type="text" name = 'username' class="form-control" id="signUpUserName" aria-describedby="emailHelp">
       </div>
 
     <div class="signup">
-      <label for="signUpInputEmail" class="form-label">Email address</label>
-      <input type="email" name = 'email' class="form-control" id="signUpInputEmail" aria-describedby="emailHelp">
+      <label for="signUpInputEmail" class="form-label">Email address:</label>
+      <input type="email" name = 'email' required class="form-control" id="signUpInputEmail" aria-describedby="emailHelp">
     </div>
 
     <div class="signup">
-      <label for="SignUpInputPassword" class="form-label">Password</label>
-      <input type="password" name = 'password' class="form-control" id="SignUpInputPassword">
+      <label for="SignUpInputPassword" class="form-label">Password:</label>
+      <input type="password" name = 'password' required class="form-control" id="SignUpInputPassword">
     </div>
-    <button type="submit" class="btn btn-primary">Done</button>
+    <button type="submit" class="btn btn-primary">Submit</button>
   </form>
