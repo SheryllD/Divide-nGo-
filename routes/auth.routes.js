@@ -84,10 +84,8 @@ router.post("/login", async(req, res, next) => {
     } else {
       res.render('auth/login', { errorMessage: 'Incorrect password.' });
     }
-  } catch(error) {
-    next(error);
-  }
-});
+  })
+  .catch(error => next(error));
 
 router.get('/UserProfile', (req, res) => res.render('LoggedInUser/UserProfile.ejs'));
 
