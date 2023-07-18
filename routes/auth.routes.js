@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User.model'); 
-const bcrypt = require('bcryptjs')
+const bcrypt = require("bcryptjs")
 
 /* GET signup page */
 router.get("/signup", (req, res, next) => {
@@ -10,9 +10,19 @@ router.get("/signup", (req, res, next) => {
 
 /* post data to register user */
 router.post("/signup", async(req, res, next) => {
-//    res.render("index");
-let newUser = await User.create(req.body) 
-res.redirect("/auth/login")
+console.log(req.body)
+const payload = { ...req.body}
+delete payload.password
+const salt = bcrypt.genSaltSync(13)
+
+payload.passwordHash = bcrypt.hashSync(req.body.password, salt)
+
+try { 
+  const newUser = await User.create(payload) 
+  res.send(newUser)
+} catch (err) {
+  console.log(err)
+}
 });
 
 // bcrypt 
