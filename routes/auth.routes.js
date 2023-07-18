@@ -57,10 +57,11 @@ router.post("/login", async(req, res, next) => {
       } else {
         // password is incorrect 
         console.log("Password is incorrect")
-      res.render("auth/login", {errorMessage: "Password is incorrect", payload: {email: currentUser.email}, 
+      res.render("auth/login", {errorMessage: "Incorrect email or password. Please try again.", 
+      payload: {email: currentUser.email}, 
     })
-      }
-    } else {
+   } 
+  } else {
         // no user exists with this email
         console.log("No user with this email")
         res.render("auth/login", {
@@ -75,7 +76,7 @@ router.post("/login", async(req, res, next) => {
       payload: { email: currentUser.email}, 
     })
   }
-});
+})
 
   /* post login route to process the data */
   router.post('/login', (req, res, next) => {
@@ -87,8 +88,7 @@ router.post("/login", async(req, res, next) => {
       });
       return;
     }
-
-    
+  
     const isPasswordValid = bcrypt.compareSync(password, user.passwordHash);
     if (isPasswordValid) {
       res.redirect('LoggedInUser/UserProfile.ejs'); // Redirect to the user profile page after successful login
