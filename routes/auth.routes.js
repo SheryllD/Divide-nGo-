@@ -16,8 +16,8 @@ const payload = { ...req.body}
 delete payload.password
 
 const salt = bcrypt.genSaltSync(13)
-
-  if (email === '' || password === '') {
+const passwordHash = bcrypt.hashSync(req.body.password, salt)
+  if (req.body.email === '' || req.body.password === '') {
     res.render("auth/signup", {
       errorMessage: "Please enter both email and password to sign up.",
     });
@@ -25,7 +25,7 @@ const salt = bcrypt.genSaltSync(13)
   }
 
   try { 
-  const newUser = await User.create(payload) 
+  const newUser = await User.create({ ...payload, passwordHash}) 
   res.redirect("/auth/login")
 } catch (err) {
   console.log(err)
@@ -53,6 +53,7 @@ router.post("/login", async(req, res, next) => {
         const loggedUser = { ...checkedUser._doc}
         delete loggedUser.passwordHash
         console.log(loggedUser) 
+        req.session.currentUser = loggedUser
         res.redirect("/LoggedInUser/profile")
       } else {
         // password is incorrect 
