@@ -100,4 +100,17 @@ router.post("/login", async(req, res, next) => {
 
 router.get('/UserProfile', (req, res) => res.render('LoggedInUser/UserProfile.ejs'));
 
+// GET /auth/logout
+router.get('/logout', (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      console.error("Error destroying session:", err);
+      res.json({ msg: "Error logging out" });
+    } else {
+      res.clearCookie('connect.sid'); // Clear the session cookie
+      res.redirect('/auth/login'); // Redirect to the login page after successful logout
+    }
+  });
+});
+
 module.exports = router;

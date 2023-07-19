@@ -33,5 +33,26 @@
        <li> <%= expense.description%>, <%= expense.amount%>, </li>
       <% }) %>
     </ul>
- 
+    
+    <!-- Add the logout button -->
+<form onsubmit="logout(); return false;">
+  <button type="submit">Logout</button>
+</form>
+
+<script>
+  async function logout() {
+    const response = await fetch('/auth/logout', {
+      method: 'GET',
+    });
+
+    if (response.ok) {
+      // Redirect to the login page after successful logout
+      window.location.href = '/auth/login';
+    } else {
+      const data = await response.json();
+      console.error('Error logging out:', data.msg);
+    }
+  }
+</script>
+
 
