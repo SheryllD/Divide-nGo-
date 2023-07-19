@@ -1,24 +1,43 @@
 
   <h2>Welcome <%=currentUser.username%> </h2>  
-
+</br>
     <script>
       function addExpense() {
         // Get the expense details from the input fields
-        var expenseName = document.getElementById('expenseName').value;
-        var expenseAmount = document.getElementById('expenseAmount').value;
+        let expenseName = document.getElementById('expenseName').value;
+        let expenseAmount = document.getElementById('expenseAmount').value;
   
         // Create a new expense element
-        var newExpense = document.createElement('li');
-        newExpense.textContent = expenseName  + ' - €' + expenseAmount;
+        let newExpense = document.createElement('li');
+        newExpense.textContent = expenseName + ' - €' + expenseAmount;
   
         // Add the new expense to the expenses list
-        var expensesList = document.getElementById('expensesList');
+        let expensesList = document.getElementById('expensesList');
         expensesList.appendChild(newExpense);
   
         // Clear the input fields
         document.getElementById('expenseName').value = '';
         document.getElementById('expenseAmount').value = '';
+
+        //calculating the total ammount
+        calculateTotal(); 
       }
+
+      function calculateTotal() {
+    const expensesList = document.getElementById('expensesList');
+    const expenseItems = expensesList.getElementsByTagName('li');
+    const totalAmount = 0;
+
+    for (let i = 0; i < expenseItems.length; i++) {
+      let expenseText = expenseItems[i].textContent;
+      let expenseAmount = parseFloat(expenseText.split(' - €')[1]);
+      totalAmount += expenseAmount;
+    }
+
+    let totalElement = document.getElementById('totalAmount');
+    totalElement.textContent = 'Total: €' + totalAmount.toFixed(2);
+  }
+
     </script>
     <h2>Add Expense</h2>
     <form action="/LoggedInUser/profile" method="post"> 
@@ -26,14 +45,21 @@
     <input type="number" name="amount" id="expenseAmount" placeholder="Expense Amount">
     <button>Add Expense</button>
   </form>
-    <h2>Expenses</h2>
-    <ul id="expensesList">
+</br>
+</br>
 
+    <h2>Total expenses:</h2>
+    <ul id="expensesList">
       <% userExpenses.forEach(expense => { %>
-       <li> <%= expense.description%>, <%= expense.amount%>, </li>
+        <li>
+          <%= expense.description %> - <%= expense.amount %>
+          <button onclick="editExpense('<%= expense._id %>')">Edit</button>
+          <button onclick="deleteExpense('<%= expense._id %>')">Delete</button>
+        </li>
       <% }) %>
     </ul>
-    
+
+
     <!-- Add the logout button -->
 <form onsubmit="logout(); return false;">
   <button type="submit">Logout</button>
@@ -54,5 +80,7 @@
     }
   }
 </script>
+
+
 
 

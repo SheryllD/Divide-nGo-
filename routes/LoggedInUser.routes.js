@@ -13,13 +13,30 @@ router.get("/profile", async (req, res, next) => {
 // after req.session, 
   // Get expense/create route to show user creation form  
   router.post("/profile", async (req, res, next) => {
-    console.log("hello", req.body) 
+   console.log("hello", req.body) 
 const newExpense = await Expense.create({ ...req.body, userId: req.session.currentUser._id})
-  
+
       res.redirect("/LoggedInUser/profile");
     }); 
 
+    /* 
   
+    router.put("/expenses/:id", async (req, res, next) => {
+      try {
+        await Expense.findByIdAndUpdate(req.params.id, req.body);
+        res.redirect("/LoggedInUser/profile");
+      } catch (error) {
+        next(error);
+      }
+    });
 
-
+    router.delete("/expenses/:id", async (req, res, next) => {
+      try {
+        await Expense.findByIdAndDelete(req.params.id);
+        res.redirect("/LoggedInUser/profile");
+      } catch (error) {
+        next(error);
+      }
+    });
+ */
 module.exports = router;
