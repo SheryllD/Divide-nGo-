@@ -5,7 +5,8 @@ const bcrypt = require('bcryptjs')
 
 /* GET Welcome User */
 router.get("/profile", (req, res, next) => {
-    res.render("LoggedInUser/UserProfile");
+  console.log("hello", req.session) 
+    res.render("LoggedInUser/UserProfile", {currentUser: req.session.currentUser});
   }); 
 
 module.exports = router;
