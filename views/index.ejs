@@ -1,6 +1,17 @@
-<h1><%= appTitle %> </h1>
-<p></p>
+<h1> Divide&Go, Simplify Shared Expenses and Balance Tracking</h1>
+<p>  Simplify the way you split bills and expenses. Effortlessly manage shared costs and keep tabs on balances with your roommates, travel buddies, social circles, and loved ones. </p>
 
-<a href="/auth/signup"><button type="button" class="btn btn-SignUpHomepage">Sign up</button></a>
-</br></br>
-<a href="/auth/login"><button type="button" class="btn btn-LoginHomepage">Login</button></a>
+<div class="loginForm">
+    <h2>Login</h2>
+<form action="/auth/login" method="POST">
+<label>E-mail: 
+<input type="email" name="email" required placeholder="Example@divide&go.com" />
+</label>
+</br>  
+<label>Password: 
+<input type="password" name="password" required placeholder="Password" />
+</label>
+<button type="submit">Login</button>
+<p>Don't have an account? <a href="/auth/signup">Sign up</a></p>
+</form>
+</div>
