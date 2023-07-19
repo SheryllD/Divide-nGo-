@@ -2,3 +2,36 @@
   <h2>Welcome <%=currentUser.username%> </h2>  
   <p></p>
 
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <script>
+      function addExpense() {
+        // Get the expense details from the input fields
+        var expenseName = document.getElementById('expenseName').value;
+        var expenseAmount = document.getElementById('expenseAmount').value;
+  
+        // Create a new expense element
+        var newExpense = document.createElement('li');
+        newExpense.textContent = expenseName + ' - €' + expenseAmount;
+  
+        // Add the new expense to the expenses list
+        var expensesList = document.getElementById('expensesList');
+        expensesList.appendChild(newExpense);
+  
+        // Clear the input fields
+        document.getElementById('expenseName').value = '';
+        document.getElementById('expenseAmount').value = '';
+      }
+    </script>
+  </head>
+  <body>
+    <h2>Add Expense</h2>
+    <input type="text" id="expenseName" placeholder="Expense Name">
+    <input type="number" id="expenseAmount" placeholder="Expense Amount">
+    <button onclick="addExpense()">Add Expense</button>
+  
+    <h2>Expenses</h2>
+    <ul id="expensesList"></ul>
+  </body>
+  </html>
