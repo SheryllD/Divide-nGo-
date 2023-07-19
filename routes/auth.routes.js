@@ -76,7 +76,7 @@ router.post("/login", async(req, res, next) => {
       payload: { email: currentUser.email}, 
     })
   }
-})
+});
 
   /* post login route to process the data */
   router.post('/login', (req, res, next) => {
@@ -96,7 +96,6 @@ router.post("/login", async(req, res, next) => {
       res.render('auth/login', { errorMessage: 'Incorrect password.' });
     }
   }); 
-
 
 router.get('/UserProfile', (req, res) => res.render('LoggedInUser/UserProfile.ejs'));
 
