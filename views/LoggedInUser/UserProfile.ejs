@@ -1,6 +1,37 @@
 
-  <h2>Welcome</h2>  
-  <p>This is your profile page my friend!</p>
- 
+  <h2>Welcome <%=currentUser.username%> </h2>  
 
+    <script>
+      function addExpense() {
+        // Get the expense details from the input fields
+        var expenseName = document.getElementById('expenseName').value;
+        var expenseAmount = document.getElementById('expenseAmount').value;
+  
+        // Create a new expense element
+        var newExpense = document.createElement('li');
+        newExpense.textContent = expenseName + ' - €' + expenseAmount;
+  
+        // Add the new expense to the expenses list
+        var expensesList = document.getElementById('expensesList');
+        expensesList.appendChild(newExpense);
+  
+        // Clear the input fields
+        document.getElementById('expenseName').value = '';
+        document.getElementById('expenseAmount').value = '';
+      }
+    </script>
+    <h2>Add Expense</h2>
+    <form action="/LoggedInUser/profile" method="post"> 
+    <input type="text" name="description" id="expenseName" placeholder="Expense Name">
+    <input type="number" name="amount" id="expenseAmount" placeholder="Expense Amount">
+    <button>Add Expense</button>
+  </form>
+    <h2>Expenses</h2>
+    <ul id="expensesList">
+
+      <% userExpenses.forEach(expense => { %>
+       <li> <%= expense.description%>, <%= expense.amount%>, </li>
+      <% }) %>
+    </ul>
+ 
 
