@@ -89,7 +89,6 @@ router.post("/login", async(req, res, next) => {
       return;
     }
     
-
     const isPasswordValid = bcrypt.compareSync(password, user.passwordHash);
     if (isPasswordValid) {
       res.redirect('LoggedInUser/UserProfile.ejs'); // Redirect to the user profile page after successful login
