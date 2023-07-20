@@ -10,6 +10,7 @@ router.get("/profile", async (req, res, next) => {
   const userExpenses = await Expense.find({userId: req.session.currentUser})
     res.render("LoggedInUser/UserProfile", {currentUser: req.session.currentUser, userExpenses});
   }); 
+
 // after req.session, 
   // Get expense/create route to show user creation form  
   router.post("/profile", async (req, res, next) => {
@@ -19,17 +20,24 @@ const newExpense = await Expense.create({ ...req.body, userId: req.session.curre
       res.redirect("/LoggedInUser/profile");
     }); 
 
-    /* 
-  
-    router.put("/expenses/:id", async (req, res, next) => {
-      try {
-        await Expense.findByIdAndUpdate(req.params.id, req.body);
-        res.redirect("/LoggedInUser/profile");
-      } catch (error) {
-        next(error);
-      }
-    });
-*/
+  // Get update expense page
+  router.get('/expenses/:id', async (req, res, next) => {
+      const expense = await Expense.findById(req.params.expenseId)
+      res.redirect("/LoggedinUser/update"); 
+    })
+
+ /* POST updated expense data */
+router.post('/expenses/:id', async (req, res, next) => {
+  console.log(req.body, req.params.id)
+  try {
+  await Expense.findByIdAndUpdate(req.params.expenseId, req.body)
+  res.redirect('/LoggedInUser/profile')
+  } catch (error) {
+  console.log(error)
+ };
+})
+
+    //Delete expense 
     router.get("/expenses/:id", async (req, res, next) => {
       try {
         await Expense.findByIdAndDelete(req.params.id);
