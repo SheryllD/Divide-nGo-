@@ -20,22 +20,39 @@ const newExpense = await Expense.create({ ...req.body, userId: req.session.curre
       res.redirect("/LoggedInUser/profile");
     }); 
 
-  // Get update expense page
-  router.get('/expenses/:id', async (req, res, next) => {
-      const expense = await Expense.findById(req.params.expenseId)
-      res.redirect("/LoggedinUser/update"); 
-    })
-
- /* POST updated expense data */
-router.post('/expenses/:id', async (req, res, next) => {
-  console.log(req.body, req.params.id)
+// Get update expense page
+router.get('/expenses/:id/edit', async (req, res, next) => {
   try {
-  await Expense.findByIdAndUpdate(req.params.expenseId, req.body)
-  res.redirect('/LoggedInUser/profile')
+    const expense = await Expense.findById(req.params.id);
+    if (!expense) {
+      return res.status(404).send("Expense not found");
+    }
+    res.render("LoggedInUser/EditExpense", { expense });
   } catch (error) {
-  console.log(error)
- };
-})
+    next(error);
+  }
+});
+
+
+// POST updated expense data
+router.post('/expenses/:id/update', async (req, res, next) => {
+  try {
+    const expenseId = req.params.id;
+    const updatedExpense = {
+      description: req.body.description,
+      amount: req.body.amount
+      // Add other fields if you have any
+    };
+
+    // Update the expense using findByIdAndUpdate
+    await Expense.findByIdAndUpdate(expenseId, updatedExpense);
+
+    res.redirect('/LoggedInUser/profile');
+  } catch (error) {
+    next(error);
+  }
+});
+
 
     //Delete expense 
     router.get("/expenses/:id", async (req, res, next) => {

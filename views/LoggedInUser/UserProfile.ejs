@@ -26,7 +26,7 @@
       function calculateTotal() {
     const expensesList = document.getElementById('expensesList');
     const expenseItems = expensesList.getElementsByTagName('li');
-    const totalAmount = 0;
+    let totalAmount = 0;
 
     for (let i = 0; i < expenseItems.length; i++) {
       let expenseText = expenseItems[i].textContent;
@@ -53,14 +53,15 @@
       <% userExpenses.forEach(expense => { %>
         <li>
           <%= expense.description %> - <%= expense.amount %>
-          <button ><a href ="/LoggedInUser/update">Update</a></button>
+          <button><a href="/LoggedInUser/expenses/<%=expense._id%>/edit">Edit</a></button>
           <button ><a href ="/LoggedInUser/expenses/<%=expense._id%>">Delete</a></button>
         </li>
       <% }) %>
     </ul>
+    
 
-
-    <!-- Add the logout button -->
+ 
+<!-- Add the logout button -->
 <form onsubmit="logout(); return false;">
   <button type="submit">Logout</button>
 </form>
@@ -80,7 +81,4 @@
     }
   }
 </script>
-
-
-
 

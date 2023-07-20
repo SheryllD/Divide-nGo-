@@ -1,0 +1,7 @@
+<!-- EditExpense.ejs -->
+<h2>Edit Expense</h2>
+<form action="/LoggedInUser/expenses/<%= expense._id %>/update" method="POST">
+  <label>Description: <input type="text" name="description" value="<%= expense.description %>"></label>
+  <label>Amount: <input type="number" name="amount" value="<%= expense.amount %>"></label>
+  <button type="submit">Update</button>
+</form>
