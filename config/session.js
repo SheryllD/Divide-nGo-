@@ -25,7 +25,8 @@ module.exports = app => {
       }, 
       //<===========this is where we save the session into the DB!!!! ===============>
       store: MongoStore.create({
-        mongoUrl: process.env.DATABASE_URL || process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/devide-ngo-",
+        mongoUrl: process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/devide-ngo-",
+        // mongoUrl: process.env.DATABASE_URL || process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/devide-ngo-",
         //ttl => time to live
         ttl: 60 * 60 * 24, // 60sec * 60min * 24h => 1 day
       }),
