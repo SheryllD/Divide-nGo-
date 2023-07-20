@@ -29,8 +29,8 @@ const newExpense = await Expense.create({ ...req.body, userId: req.session.curre
         next(error);
       }
     });
-
-    router.delete("/expenses/:id", async (req, res, next) => {
+*/
+    router.get("/expenses/:id", async (req, res, next) => {
       try {
         await Expense.findByIdAndDelete(req.params.id);
         res.redirect("/LoggedInUser/profile");
@@ -38,5 +38,5 @@ const newExpense = await Expense.create({ ...req.body, userId: req.session.curre
         next(error);
       }
     });
- */
+ 
 module.exports = router;

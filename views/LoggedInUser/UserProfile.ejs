@@ -54,7 +54,7 @@
         <li>
           <%= expense.description %> - <%= expense.amount %>
           <button onclick="editExpense('<%= expense._id %>')">Edit</button>
-          <button onclick="deleteExpense('<%= expense._id %>')">Delete</button>
+          <button ><a href = "/LoggedInUser/expenses/<%=expense._id%>">Delete</a></button>
         </li>
       <% }) %>
     </ul>
