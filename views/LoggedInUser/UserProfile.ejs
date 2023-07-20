@@ -53,8 +53,8 @@
       <% userExpenses.forEach(expense => { %>
         <li>
           <%= expense.description %> - <%= expense.amount %>
-          <button onclick="editExpense('<%= expense._id %>')">Edit</button>
-          <button ><a href = "/LoggedInUser/expenses/<%=expense._id%>">Delete</a></button>
+          <button ><a href ="/LoggedInUser/update">Update</a></button>
+          <button ><a href ="/LoggedInUser/expenses/<%=expense._id%>">Delete</a></button>
         </li>
       <% }) %>
     </ul>
