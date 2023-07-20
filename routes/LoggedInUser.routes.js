@@ -7,7 +7,7 @@ const bcrypt = require('bcryptjs')
 /* GET Welcome User */
 router.get("/profile", async (req, res, next) => {
   console.log("hello", req.session) 
-  const userExpenses = await Expense.find({userId: req.session.currentUser._id})
+  const userExpenses = await Expense.find({userId: req.session.currentUser})
     res.render("LoggedInUser/UserProfile", {currentUser: req.session.currentUser, userExpenses});
   }); 
 // after req.session, 
