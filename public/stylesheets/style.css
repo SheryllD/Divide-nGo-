@@ -23,11 +23,7 @@ h1 {
   padding: 10px;
   align-items: center;
   text-align: center;
-  /* border-style: solid;
-  border-width: 2px;
-  background-color: #AFB4EB;
-  border-radius: 10px; */
-  text-shadow: 2px 5px 20px #AAC7FF;
+  text-shadow: 2px 5px 20px #071124;
 }
 
 .h3 {
@@ -38,11 +34,9 @@ h1 {
   text-align: center;
   text-shadow: 2px 5px 2px #AAC7FF;
 }
-}
 
 .p {
   text-align: center;
-  /* justify-content: left; */
 }
 
 /* Basic styling for the navigation bar */
