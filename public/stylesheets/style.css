@@ -1,7 +1,11 @@
 body {
-  padding: 50px;
+  padding-left: 20px;
+  padding-right: 25px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: #74b9ff;
+  background-color: #AAC7FF;
+  background-image: url("../images/background-1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 a {
@@ -9,55 +13,84 @@ a {
 }
 
 h1 {
-  color: 15px;
   align-items: center;
+  text-align: right;
+  padding-right: 140px;
+}
+
+.h3 {
+  align-items: center;
+  text-align: right;
+  padding-right: 75px;
+}
+
+.p {
+  text-align: right;
 }
 
 /* Basic styling for the navigation bar */
 ul.navbar {
   list-style-type: none;
   margin: 0;
-  padding: 0;
+  padding: 0x;
   overflow: hidden;
-  background-color: #74b9ff;
+  /* background-color: #74b9ff; */
+  
 }
 
-ul.navbar li {
-  float: left;
+.button {
+  /* float: left; */
+  font-weight: 700;
+  background-color: #9c88ff;
+  border-color: #8c7ae6;
+  border-radius: 5px;
+  width: 100px;
+  height: 40px;
+  gap: 25px;
+}
+
+.menu {
+  float:right;
+  direction:rtl;
+  text-align:right;  
+  padding-top: 25px;
 }
 
 ul.navbar li a {
-  display: block;
+  /* display: block; */
   color: rgb(56, 20, 155);
   text-align: center;
-  padding: 14px 16px;
+  padding: 10px 16px;
   text-decoration: none;
 }
 
-ul.navbar li a:hover {
-  background-color: #111;
-}
+/* ul.navbar li a:hover {
+  background-color: #1111118c;
+} */
 
 /* Styling for the logo */
 .logo {
   float: left;
   margin-right: 20px;
+  margin-top: 0px;
 }
 
 .logo img {
-  height: 50px;
-  width: 210px;
+  height: 60px;
+  width: 252px;
 }
 
  /* Form container */
     .loginForm {
       max-width: 400px;
-      margin: 20 auto;
+      margin-top: 20;
+      margin-right: 50;
       padding: 50px;
       background-color: #f3e5e5;
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      text-align:left;
+      text-align:center;
+      float:right;
     }
 
     /* Form heading */
@@ -108,4 +141,11 @@ ul.navbar li a:hover {
 
     .loginForm p a:hover {
       color: #111;
+    }
+
+    .button-form {
+      font-weight: 700;
+      background-color: #7f8fa6;
+      border-color: #718093;
+      border-radius: 5px;
     }
